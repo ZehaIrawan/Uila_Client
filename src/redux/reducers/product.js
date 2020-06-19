@@ -2,11 +2,14 @@ import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
   EDIT_PRODUCT,
+  FILTER_PRODUCT,
   GET_PRODUCTS,
+  RESET_PRODUCT_FILTER,
   UPDATE_PRODUCT,
 } from '../actions/types';
 
 const initialState = {
+  filteredProducts: {},
   products: [],
   product: [],
   loading: true,
@@ -17,7 +20,24 @@ const products = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case GET_PRODUCTS:
-      return { ...state, products: payload.product, loading: false };
+      return {
+        ...state,
+        products: payload.product,
+        filteredProducts: payload.product,
+        loading: false,
+      };
+    case FILTER_PRODUCT:
+      return {
+        ...state,
+        filteredProducts: state.products.filter(
+          (product) => product.category_id === payload,
+        ),
+      };
+    case RESET_PRODUCT_FILTER:
+      return {
+        ...state,
+        filteredProducts: state.products,
+      };
     case ADD_PRODUCT:
       return {
         ...state,
