@@ -9,7 +9,8 @@ const ProductList = ({ getProducts, loading, product }) => {
     getProducts();
   }, [getProducts]);
 
-  console.log(product);
+  const pizza = product.filter((e) => e.category_id === 1);
+  const burger = product.filter((e) => e.category_id === 3);
 
   if (loading) {
     return (
@@ -22,17 +23,29 @@ const ProductList = ({ getProducts, loading, product }) => {
   return (
     <Fragment>
       <Navbar></Navbar>
-      Our Meals
+      <h1>Pizza</h1>
       <div>
-      {product.map(product => (
-        <Product
-        key={product.id}
-        img={product.image}
-        title={product.title}
-        description={product.description}
-        price={product.price}
-        />
-      ))}
+        {pizza.map((product) => (
+          <Product
+            key={product.id}
+            img={product.image}
+            title={product.title}
+            description={product.description}
+            price={product.price}
+          />
+        ))}
+      </div>
+      <h1>Burger</h1>
+      <div>
+        {burger.map((product) => (
+          <Product
+            key={product.id}
+            img={product.image}
+            title={product.title}
+            description={product.description}
+            price={product.price}
+          />
+        ))}
       </div>
     </Fragment>
   );
