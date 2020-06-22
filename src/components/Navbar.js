@@ -10,6 +10,10 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <h2>Products</h2>
       </Link>
 
+      <Link to="/cart">
+        <h2>Cart</h2>
+      </Link>
+
       <Link to="/">
         <h2 onClick={logout}>Logout</h2>
       </Link>

@@ -4,6 +4,7 @@ import {
   EDIT_PRODUCT,
   FILTER_PRODUCT,
   GET_PRODUCTS,
+  GET_PRODUCTS_CATEGORIES,
   RESET_PRODUCT_FILTER,
   UPDATE_PRODUCT,
 } from '../actions/types';
@@ -14,6 +15,7 @@ const initialState = {
   product: [],
   loading: true,
   error: {},
+  categories: {},
 };
 
 const products = (state = initialState, action) => {
@@ -24,7 +26,6 @@ const products = (state = initialState, action) => {
         ...state,
         products: payload.product,
         filteredProducts: payload.product,
-        loading: false,
       };
     case FILTER_PRODUCT:
       return {
@@ -32,6 +33,12 @@ const products = (state = initialState, action) => {
         filteredProducts: state.products.filter(
           (product) => product.category_id === payload,
         ),
+      };
+    case GET_PRODUCTS_CATEGORIES:
+      return {
+        ...state,
+        categories: payload,
+        loading: false,
       };
     case RESET_PRODUCT_FILTER:
       return {

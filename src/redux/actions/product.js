@@ -5,9 +5,10 @@ import {
   EDIT_PRODUCT,
   FILTER_PRODUCT,
   GET_PRODUCTS,
+  GET_PRODUCTS_CATEGORIES,
   PRODUCT_ERROR,
-  UPDATE_PRODUCT,
   RESET_PRODUCT_FILTER,
+  UPDATE_PRODUCT,
 } from './types';
 
 // Get PRODUGET_PRODUCTS
@@ -21,6 +22,21 @@ export const getProducts = () => async (dispatch) => {
     });
   } catch (err) {
     console.log(err);
+  }
+};
+
+//
+
+export const getProductCategories = () => async (dispatch) => {
+  try {
+    const res = await axios.get('http://localhost:5000/api/v1/categories');
+
+    dispatch({
+      type: GET_PRODUCTS_CATEGORIES,
+      payload: res.data,
+    });
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -118,6 +134,6 @@ export const filterProducts = (categoryId) => ({
 
 // Reset product filter
 export const resetFilterProducts = (categoryId) => ({
-  type:RESET_PRODUCT_FILTER,
+  type: RESET_PRODUCT_FILTER,
   payload: categoryId,
 });

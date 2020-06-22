@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import {
   filterProducts,
+  getProductCategories,
   getProducts,
   resetFilterProducts,
 } from '../redux/actions/product';
@@ -15,10 +16,13 @@ const ProductList = ({
   filteredProducts,
   resetFilterProducts,
   filterProducts,
+  getProductCategories,
+  categories,
 }) => {
   useEffect(() => {
     getProducts();
-  }, [getProducts]);
+    getProductCategories();
+  }, [getProducts, getProductCategories]);
 
   if (loading) {
     return (
@@ -32,9 +36,23 @@ const ProductList = ({
     <Fragment>
       <Navbar></Navbar>
 
-      <button onClick={() => resetFilterProducts()}>All</button>
-      <button onClick={() => filterProducts(1)}>Pizza</button>
-      <button onClick={() => filterProducts(3)}>Burger</button>
+      <button onClick={() => resetFilterProducts()}>
+        All ({product.length})
+      </button>
+
+      {categories.map((category) => {
+        let count = 0;
+
+        product.forEach((p) => {
+          if (p.category_id === category.id) count += 1;
+        });
+
+        return (
+          <button key={category.id} onClick={() => filterProducts(category.id)}>
+            {category.title} ({count})
+          </button>
+        );
+      })}
 
       <div>
         {filteredProducts.map((product) => (
@@ -55,10 +73,12 @@ const mapStateToProps = (state) => ({
   product: state.product.products,
   loading: state.product.loading,
   filteredProducts: state.product.filteredProducts,
+  categories: state.product.categories,
 });
 
 export default connect(mapStateToProps, {
   getProducts,
   filterProducts,
   resetFilterProducts,
+  getProductCategories,
 })(ProductList);
