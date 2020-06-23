@@ -26,6 +26,13 @@ const ProductList = ({
     getProductCategories();
   }, [getProducts, getProductCategories]);
 
+
+  useEffect(() => {
+    return () => {
+     resetFilterProducts()
+    };
+  }, []);
+
   if (loading) {
     return (
       <Fragment>

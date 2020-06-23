@@ -5,6 +5,7 @@ import {
   decreaseCart,
   getCart,
   increaseCart,
+  removeCart
 } from '../redux/actions/cart';
 import CartItem from './CartItem';
 import Navbar from './Navbar';
@@ -15,11 +16,12 @@ const Cart = ({
   cart,
   increaseCart,
   decreaseCart,
+  removeCart,
   clearCart,
 }) => {
   useEffect(() => {
     getCart();
-  }, [getCart,cart]);
+  }, [getCart]);
 
   if (loading) {
     return (
@@ -57,7 +59,7 @@ const Cart = ({
       {cart.cart.map((cart) => (
         <CartItem
           key={cart.id}
-          id={cart._id}
+          cart_id={cart.id}
           title={cart.product.title}
           img={cart.product.image}
           price={cart.product.price}
@@ -65,6 +67,7 @@ const Cart = ({
           quantity={cart.quantity}
           increaseCart={increaseCart}
           decreaseCart={decreaseCart}
+          removeCart={removeCart}
         />
       ))}
       {/* <button
@@ -91,4 +94,5 @@ export default connect(mapStateToProp, {
   increaseCart,
   decreaseCart,
   clearCart,
+  removeCart
 })(Cart);

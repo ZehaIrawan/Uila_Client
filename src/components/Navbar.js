@@ -1,9 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../redux/actions/auth';
+import { getCart } from '../redux/actions/cart';
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout, cart }) => {
+const Navbar = ({ auth: { isAuthenticated, loading }, logout, cart,getCart }) => {
+  useEffect(() => {
+    getCart();
+  }, [getCart]);
+
   const authLinks = (
     <Fragment>
       <Link to="/products">
@@ -50,4 +55,4 @@ const mapStateToProps = (state) => ({
   cart: state.cart.cart,
 });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { logout ,getCart})(Navbar);

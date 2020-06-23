@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { removeCart } from '../redux/actions/cart';
 
-const CartItem = ({ title, quantity, product, product_id, img, price }) => {
+
+const CartItem = ({ title, quantity, product, product_id, img, price,cart_id ,removeCart}) => {
   const changeQuantity = (e) => {
     // console.log(e);
   };
@@ -20,7 +20,7 @@ const CartItem = ({ title, quantity, product, product_id, img, price }) => {
         ></input>
         <button>-</button>
         <button>+</button>
-        <button>Delete</button>
+        <button onClick={()=>removeCart(cart_id)}>Delete</button>
       </div>
     </Fragment>
   );
@@ -30,4 +30,4 @@ const mapStateToProp = (state) => ({
   product: state.product.products,
 });
 
-export default connect(mapStateToProp, { removeCart })(CartItem);
+export default connect(mapStateToProp, { })(CartItem);

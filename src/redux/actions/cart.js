@@ -53,7 +53,7 @@ export const addToCart = (productId) => async (dispatch) => {
 // Remove item from cart
 export const removeCart = (id) => async (dispatch) => {
   try {
-    await axios.delete(`/api/cart/${id}`);
+    await axios.delete(`http://localhost:5000/api/v1/cart_items/${id}`);
 
     dispatch({
       type: REMOVE_CART,

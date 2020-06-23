@@ -21,13 +21,22 @@ const cart = (state = initialState, action) => {
     case ADD_TO_CART:
       return {
         ...state,
-        cart: [payload, ...state.cart],
+         cart: state.cart.map((item, index) => {
+          if (item.id === payload.id) {
+            return {
+              ...item,
+              quantity: payload.quantity,
+            };
+          } else{
+          }
+          return item;
+        }),
         loading: false,
       };
     case REMOVE_CART:
       return {
         ...state,
-        cart: state.cart.filter(cart => cart._id !== payload),
+        cart: state.cart.filter(cart => cart.id !== payload),
         loading: false,
       };
     case INCREASE_CART:
