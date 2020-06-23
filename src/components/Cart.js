@@ -68,6 +68,7 @@ const Cart = ({
           increaseCart={increaseCart}
           decreaseCart={decreaseCart}
           removeCart={removeCart}
+          cart={cart}
         />
       ))}
       {/* <button

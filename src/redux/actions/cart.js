@@ -65,15 +65,23 @@ export const removeCart = (id) => async (dispatch) => {
 };
 
 // Increase quantity for an item in the cart
-export const increaseCart = (id, formData) => async (dispatch) => {
+export const increaseCart = (id, quantity) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
 
+  quantity = {
+    quantity
+  };
+  
   try {
-    const res = await axios.put(`/api/cart/${id}`, formData, config);
+    const res = await axios.put(
+      `http://localhost:5000/api/v1/cart_items/${id}`,
+      quantity,
+      config,
+    );
 
     dispatch({
       type: INCREASE_CART,
@@ -85,15 +93,23 @@ export const increaseCart = (id, formData) => async (dispatch) => {
 };
 
 // Decrease quantity for an item in the cart
-export const decreaseCart = (id, formData) => async (dispatch) => {
+export const decreaseCart = (id, quantity) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
 
+  quantity = {
+    quantity
+  };
+
   try {
-    const res = await axios.put(`/api/cart/${id}`, formData, config);
+    const res = await axios.put(
+      `http://localhost:5000/api/v1/cart_items/${id}`,
+      quantity,
+      config,
+    );
 
     dispatch({
       type: DECREASE_CART,
