@@ -19,24 +19,30 @@ const cart = (state = initialState, action) => {
     case GET_CART:
       return { ...state, cart: payload, loading: false };
     case ADD_TO_CART:
+      let newProduct = false;
+      const productInCart = state.cart.map((item, index) => {
+        if (item.id === payload.id) {
+          newProduct = false;
+          return {
+            ...item,
+            quantity: payload.quantity,
+          };
+        } else {
+          newProduct = true;
+        }
+        return item;
+      });
+      if (newProduct) productInCart.push(payload);
       return {
         ...state,
-         cart: state.cart.map((item, index) => {
-          if (item.id === payload.id) {
-            return {
-              ...item,
-              quantity: payload.quantity,
-            };
-          } else{
-          }
-          return item;
-        }),
+        cart: productInCart,
+        payload,
         loading: false,
       };
     case REMOVE_CART:
       return {
         ...state,
-        cart: state.cart.filter(cart => cart.id !== payload),
+        cart: state.cart.filter((cart) => cart.id !== payload),
         loading: false,
       };
     case INCREASE_CART:
@@ -84,7 +90,8 @@ const cart = (state = initialState, action) => {
       };
     case CLEAR_CART:
       return {
-        ...state,cart:[]
+        ...state,
+        cart: [],
       };
 
     default:

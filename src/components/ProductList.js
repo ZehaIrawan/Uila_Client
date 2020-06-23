@@ -28,9 +28,7 @@ const ProductList = ({
 
 
   useEffect(() => {
-    return () => {
      resetFilterProducts()
-    };
   }, []);
 
   if (loading) {
