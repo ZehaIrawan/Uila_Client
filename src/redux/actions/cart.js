@@ -73,9 +73,9 @@ export const increaseCart = (id, quantity) => async (dispatch) => {
   };
 
   quantity = {
-    quantity
+    quantity,
   };
-  
+
   try {
     const res = await axios.put(
       `http://localhost:5000/api/v1/cart_items/${id}`,
@@ -101,7 +101,7 @@ export const decreaseCart = (id, quantity) => async (dispatch) => {
   };
 
   quantity = {
-    quantity
+    quantity,
   };
 
   try {
@@ -123,15 +123,16 @@ export const decreaseCart = (id, quantity) => async (dispatch) => {
 //Clear items from cart
 export const clearCart = (cart) => async (dispatch) => {
   for (let i = 0; i < cart.length; i++) {
-    console.log(cart[i]._id);
     try {
-      await axios.delete(`/api/cart/${cart[i]._id}`);
+      await axios.delete(
+        `http://localhost:5000/api/v1/cart_items/${cart[i].id}`,
+      );
+      dispatch({
+        type: CLEAR_CART,
+        payload: cart.id,
+      });
     } catch (err) {
       console.log(err);
     }
   }
-  dispatch({
-    type: CLEAR_CART,
-    payload: cart.id,
-  });
 };

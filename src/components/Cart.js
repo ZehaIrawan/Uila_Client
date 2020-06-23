@@ -71,15 +71,15 @@ const Cart = ({
           cart={cart}
         />
       ))}
-      {/* <button
+      <button
         onClick={() => {
           clearCart(cart.cart);
         }}
-        className="total add-to-cart"
+
       >
         Clear Cart
-      </button> */}
-      <h3 className="total">Total: ${total}</h3>
+      </button>
+      <h3>Total: ${total}</h3>
       <button>Checkout</button>
     </Fragment>
   );
