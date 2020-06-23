@@ -4,7 +4,7 @@ import { removeCart } from '../redux/actions/cart';
 
 const CartItem = ({ title, quantity, product, product_id, img, price }) => {
   const changeQuantity = (e) => {
-    console.log(e);
+    // console.log(e);
   };
 
   return (

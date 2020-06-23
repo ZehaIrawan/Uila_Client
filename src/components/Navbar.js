@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../redux/actions/auth';
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, loading }, logout, cart }) => {
   const authLinks = (
     <Fragment>
       <Link to="/products">
@@ -11,7 +11,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </Link>
 
       <Link to="/cart">
-        <h2>Cart</h2>
+        <h2>Cart ({cart.length})</h2>
       </Link>
 
       <Link to="/">
@@ -47,6 +47,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  cart: state.cart.cart,
 });
 
 export default connect(mapStateToProps, { logout })(Navbar);

@@ -23,15 +23,23 @@ export const getCart = () => async (dispatch) => {
 };
 
 // Add an item to cart
-export const addToCart = (formData) => async (dispatch) => {
+export const addToCart = (productId) => async (dispatch) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
 
+  const params = {
+    product_id: productId,
+  };
+
   try {
-    const res = await axios.post('/api/cart', formData, config);
+    const res = await axios.post(
+      'http://localhost:5000/api/v1/cart_items',
+      params,
+      config,
+    );
 
     dispatch({
       type: ADD_TO_CART,

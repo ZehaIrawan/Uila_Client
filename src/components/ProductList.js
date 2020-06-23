@@ -6,6 +6,7 @@ import {
   getProducts,
   resetFilterProducts,
 } from '../redux/actions/product';
+import {addToCart} from '../redux/actions/cart'
 import Navbar from './Navbar';
 import Product from './Product';
 
@@ -18,6 +19,7 @@ const ProductList = ({
   filterProducts,
   getProductCategories,
   categories,
+  addToCart
 }) => {
   useEffect(() => {
     getProducts();
@@ -58,10 +60,12 @@ const ProductList = ({
         {filteredProducts.map((product) => (
           <Product
             key={product.id}
+            id={product.id}
             img={product.image}
             title={product.title}
             description={product.description}
             price={product.price}
+            addToCart={addToCart}
           />
         ))}
       </div>
@@ -81,4 +85,5 @@ export default connect(mapStateToProps, {
   filterProducts,
   resetFilterProducts,
   getProductCategories,
+  addToCart
 })(ProductList);

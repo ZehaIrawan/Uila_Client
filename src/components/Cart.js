@@ -19,7 +19,7 @@ const Cart = ({
 }) => {
   useEffect(() => {
     getCart();
-  }, [getCart]);
+  }, [getCart,cart]);
 
   if (loading) {
     return (
