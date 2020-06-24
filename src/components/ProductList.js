@@ -1,15 +1,35 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getProducts } from '../redux/actions/product';
+import {
+  filterProducts,
+  getProductCategories,
+  getProducts,
+  resetFilterProducts,
+} from '../redux/actions/product';
+import {addToCart} from '../redux/actions/cart'
 import Navbar from './Navbar';
 import Product from './Product';
 
-const ProductList = ({ getProducts, loading, product }) => {
+const ProductList = ({
+  getProducts,
+  loading,
+  product,
+  filteredProducts,
+  resetFilterProducts,
+  filterProducts,
+  getProductCategories,
+  categories,
+  addToCart
+}) => {
   useEffect(() => {
     getProducts();
-  }, [getProducts]);
+    getProductCategories();
+  }, [getProducts, getProductCategories]);
 
-  console.log(product);
+
+  useEffect(() => {
+     resetFilterProducts()
+  }, []);
 
   if (loading) {
     return (
@@ -22,17 +42,37 @@ const ProductList = ({ getProducts, loading, product }) => {
   return (
     <Fragment>
       <Navbar></Navbar>
-      Our Meals
+
+      <button onClick={() => resetFilterProducts()}>
+        All ({product.length})
+      </button>
+
+      {categories.map((category) => {
+        let count = 0;
+
+        product.forEach((p) => {
+          if (p.category_id === category.id) count += 1;
+        });
+
+        return (
+          <button key={category.id} onClick={() => filterProducts(category.id)}>
+            {category.title} ({count})
+          </button>
+        );
+      })}
+
       <div>
-      {product.map(product => (
-        <Product
-        key={product.id}
-        img={product.image}
-        title={product.title}
-        description={product.description}
-        price={product.price}
-        />
-      ))}
+        {filteredProducts.map((product) => (
+          <Product
+            key={product.id}
+            id={product.id}
+            img={product.image}
+            title={product.title}
+            description={product.description}
+            price={product.price}
+            addToCart={addToCart}
+          />
+        ))}
       </div>
     </Fragment>
   );
@@ -40,9 +80,15 @@ const ProductList = ({ getProducts, loading, product }) => {
 
 const mapStateToProps = (state) => ({
   product: state.product.products,
-  // loading: state.products.loading,
+  loading: state.product.loading,
+  filteredProducts: state.product.filteredProducts,
+  categories: state.product.categories,
 });
 
 export default connect(mapStateToProps, {
   getProducts,
+  filterProducts,
+  resetFilterProducts,
+  getProductCategories,
+  addToCart
 })(ProductList);

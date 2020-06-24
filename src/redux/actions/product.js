@@ -3,8 +3,11 @@ import {
   ADD_PRODUCT,
   DELETE_PRODUCT,
   EDIT_PRODUCT,
+  FILTER_PRODUCT,
   GET_PRODUCTS,
+  GET_PRODUCTS_CATEGORIES,
   PRODUCT_ERROR,
+  RESET_PRODUCT_FILTER,
   UPDATE_PRODUCT,
 } from './types';
 
@@ -22,6 +25,21 @@ export const getProducts = () => async (dispatch) => {
   }
 };
 
+//
+
+export const getProductCategories = () => async (dispatch) => {
+  try {
+    const res = await axios.get('http://localhost:5000/api/v1/categories');
+
+    dispatch({
+      type: GET_PRODUCTS_CATEGORIES,
+      payload: res.data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // Add Product
 export const addProduct = (formData) => async (dispatch) => {
   const config = {
@@ -31,13 +49,16 @@ export const addProduct = (formData) => async (dispatch) => {
   };
 
   try {
-    const res = await axios.post('http://localhost:5000/api/v1/products', formData, config);
+    const res = await axios.post(
+      'http://localhost:5000/api/v1/products',
+      formData,
+      config,
+    );
 
     dispatch({
       type: ADD_PRODUCT,
       payload: res.data,
     });
-
   } catch (err) {
     dispatch({
       type: PRODUCT_ERROR,
@@ -55,7 +76,6 @@ export const deleteProduct = (id) => async (dispatch) => {
       type: DELETE_PRODUCT,
       payload: id,
     });
-
   } catch (err) {
     dispatch({
       type: PRODUCT_ERROR,
@@ -88,13 +108,16 @@ export const updateProduct = (id, formData) => async (dispatch) => {
     },
   };
   try {
-    const res = await axios.put(`http://localhost:5000/api/v1/products${id}`, formData, config);
+    const res = await axios.put(
+      `http://localhost:5000/api/v1/products${id}`,
+      formData,
+      config,
+    );
 
     dispatch({
       type: UPDATE_PRODUCT,
       payload: res.data,
     });
-
   } catch (err) {
     dispatch({
       type: PRODUCT_ERROR,
@@ -102,3 +125,15 @@ export const updateProduct = (id, formData) => async (dispatch) => {
     });
   }
 };
+
+// Filter products by category
+export const filterProducts = (categoryId) => ({
+  type: FILTER_PRODUCT,
+  payload: categoryId,
+});
+
+// Reset product filter
+export const resetFilterProducts = (categoryId) => ({
+  type: RESET_PRODUCT_FILTER,
+  payload: categoryId,
+});
