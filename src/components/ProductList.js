@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { addToCart } from '../redux/actions/cart';
 import {
   filterProducts,
   getProductCategories,
   getProducts,
   resetFilterProducts,
 } from '../redux/actions/product';
-import {addToCart} from '../redux/actions/cart'
 import Navbar from './Navbar';
 import Product from './Product';
 
@@ -19,16 +19,15 @@ const ProductList = ({
   filterProducts,
   getProductCategories,
   categories,
-  addToCart
+  addToCart,
 }) => {
   useEffect(() => {
     getProducts();
     getProductCategories();
   }, [getProducts, getProductCategories]);
 
-
   useEffect(() => {
-     resetFilterProducts()
+    resetFilterProducts();
   }, []);
 
   if (loading) {
@@ -40,8 +39,14 @@ const ProductList = ({
   }
 
   return (
-    <Fragment>
+    <div className="px-8 py-12">
       <Navbar></Navbar>
+
+      <img
+        className="rounded w-10/12 object-center"
+        src="https://i.imgur.com/xvo5vKR.png"
+        alt="header"
+      />
 
       <button onClick={() => resetFilterProducts()}>
         All ({product.length})
@@ -74,7 +79,7 @@ const ProductList = ({
           />
         ))}
       </div>
-    </Fragment>
+    </div>
   );
 };
 
@@ -90,5 +95,5 @@ export default connect(mapStateToProps, {
   filterProducts,
   resetFilterProducts,
   getProductCategories,
-  addToCart
+  addToCart,
 })(ProductList);
