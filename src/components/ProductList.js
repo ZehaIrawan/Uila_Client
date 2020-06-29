@@ -7,6 +7,7 @@ import {
   getProducts,
   resetFilterProducts,
 } from '../redux/actions/product';
+import Footer from './Footer';
 import Navbar from './Navbar';
 import Product from './Product';
 
@@ -39,7 +40,7 @@ const ProductList = ({
   }
 
   return (
-    <div className="px-8 py-12">
+    <div>
       <Navbar></Navbar>
 
       <img
@@ -79,6 +80,7 @@ const ProductList = ({
           />
         ))}
       </div>
+      <Footer></Footer>
     </div>
   );
 };

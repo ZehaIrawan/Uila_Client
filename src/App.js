@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
@@ -23,7 +23,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <Fragment>
+        <div className="px-8 py-12">
           <Switch>
             <Route exact path="/" component={ProductList} />
             <Route exact path="/register" component={Register} />
@@ -42,7 +42,7 @@ const App = () => {
               component={Payment}
             ></PrivateRoutes>
           </Switch>
-        </Fragment>
+        </div>
       </Router>
     </Provider>
   );
