@@ -49,7 +49,10 @@ const ProductList = ({
         alt="header"
       />
 
-      <button onClick={() => resetFilterProducts()}>
+      <button
+        className="border rounded-lg m-4 p-1 bg-custom-sort bg-orange-600 text-white  focus:outline-none  py-1 px-4 "
+        onClick={() => resetFilterProducts()}
+      >
         All ({product.length})
       </button>
 
@@ -61,7 +64,11 @@ const ProductList = ({
         });
 
         return (
-          <button key={category.id} onClick={() => filterProducts(category.id)}>
+          <button
+            className="border rounded-lg m-4 py-1 px-4 bg-custom-sort bg-orange-600 text-white focus:outline-none"
+            key={category.id}
+            onClick={() => filterProducts(category.id)}
+          >
             {category.title} ({count})
           </button>
         );
