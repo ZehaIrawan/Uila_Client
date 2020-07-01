@@ -37,24 +37,30 @@ const Navbar = ({
 
   const guestLinks = (
     <Fragment>
-      <Link className="font-semibold text-xl hover:text-primary" to="/register">
+      <Link
+        className="font-semibold text-xl hover:text-primary mt-1 px-2 py-1"
+        to="/register"
+      >
         <h2>Register</h2>
       </Link>
-      <Link className="font-semibold text-xl hover:text-primary" to="/login">
+      <Link
+        className="font-semibold text-xl hover:text-primary mt-1 px-2 py-1"
+        to="/login"
+      >
         <h2>Login</h2>
       </Link>
     </Fragment>
   );
 
   return (
-    <div>
-      <nav className="flex bg-white items-center rounded-lg justify-between py-2 px-4">
+    <div className="sm:flex bg-white sm:justify-between">
+      <nav className="flex items-center justify-between py-2 px-4 sm:px-8">
         <Link to="/">
           <img className="h-20" src="https://i.imgur.com/OdqzUGc.png" alt="" />
         </Link>
         <button
           type="button"
-          class="block text-primary focus:text-primary focus:outline-none"
+          class="block text-primary focus:text-primary focus:outline-none sm:hidden"
           onClick={() => setIsOpen(!isOpen)}
         >
           <svg
@@ -76,7 +82,13 @@ const Navbar = ({
         </button>
       </nav>
       {!loading && (
-        <div className={isOpen ? 'block bg-white px-5 pb-4' : 'hidden'}>
+        <div
+          className={
+            isOpen
+              ? 'block px-2 pl-6 sm:block sm:flex items-center sm:justify-between'
+              : 'hidden sm:block px-2 pl-6 sm:flex items-center sm:justify-between'
+          }
+        >
           {isAuthenticated ? authLinks : guestLinks}
         </div>
       )}
