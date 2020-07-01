@@ -42,52 +42,53 @@ const ProductList = ({
   return (
     <div>
       <Navbar></Navbar>
+      <div className="px-8 py-5">
+        <img
+          className="rounded w-10/12 object-center"
+          src="https://i.imgur.com/xvo5vKR.png"
+          alt="header"
+        />
 
-      <img
-        className="rounded w-10/12 object-center"
-        src="https://i.imgur.com/xvo5vKR.png"
-        alt="header"
-      />
+        <button
+          className="border rounded-lg m-4 p-1 bg-custom-sort bg-orange-600 text-white  focus:outline-none  py-1 px-4 "
+          onClick={() => resetFilterProducts()}
+        >
+          All ({product.length})
+        </button>
 
-      <button
-        className="border rounded-lg m-4 p-1 bg-custom-sort bg-orange-600 text-white  focus:outline-none  py-1 px-4 "
-        onClick={() => resetFilterProducts()}
-      >
-        All ({product.length})
-      </button>
+        {categories.map((category) => {
+          let count = 0;
 
-      {categories.map((category) => {
-        let count = 0;
+          product.forEach((p) => {
+            if (p.category_id === category.id) count += 1;
+          });
 
-        product.forEach((p) => {
-          if (p.category_id === category.id) count += 1;
-        });
+          return (
+            <button
+              className="border rounded-lg m-4 py-1 px-4 bg-custom-sort bg-orange-600 text-white focus:outline-none"
+              key={category.id}
+              onClick={() => filterProducts(category.id)}
+            >
+              {category.title} ({count})
+            </button>
+          );
+        })}
 
-        return (
-          <button
-            className="border rounded-lg m-4 py-1 px-4 bg-custom-sort bg-orange-600 text-white focus:outline-none"
-            key={category.id}
-            onClick={() => filterProducts(category.id)}
-          >
-            {category.title} ({count})
-          </button>
-        );
-      })}
-
-      <div>
-        {filteredProducts.map((product) => (
-          <Product
-            key={product.id}
-            id={product.id}
-            img={product.image}
-            title={product.title}
-            description={product.description}
-            price={product.price}
-            addToCart={addToCart}
-          />
-        ))}
+        <div>
+          {filteredProducts.map((product) => (
+            <Product
+              key={product.id}
+              id={product.id}
+              img={product.image}
+              title={product.title}
+              description={product.description}
+              price={product.price}
+              addToCart={addToCart}
+            />
+          ))}
+        </div>
+        <Footer></Footer>
       </div>
-      <Footer></Footer>
     </div>
   );
 };
