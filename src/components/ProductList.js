@@ -44,7 +44,7 @@ const ProductList = ({
       <Navbar></Navbar>
       <div className="px-8 py-5">
         <img
-          className="rounded w-10/12 object-center"
+          className="rounded w-10/12 object-center hidden sm:block"
           src="https://i.imgur.com/xvo5vKR.png"
           alt="header"
         />
