@@ -50,7 +50,7 @@ const ProductList = ({
         />
 
         <button
-          className="border rounded-lg m-4 p-1 bg-custom-sort bg-orange-600 text-white  focus:outline-none  py-1 px-4 "
+          className="border rounded-lg m-4 p-1 bg-custom-sort bg-primary text-white  focus:outline-none  py-1 px-4 "
           onClick={() => resetFilterProducts()}
         >
           All ({product.length})
@@ -65,7 +65,7 @@ const ProductList = ({
 
           return (
             <button
-              className="border rounded-lg m-4 py-1 px-4 bg-custom-sort bg-orange-600 text-white focus:outline-none"
+              className="border rounded-lg m-4 py-1 px-4 bg-custom-sort bg-primary text-white focus:outline-none"
               key={category.id}
               onClick={() => filterProducts(category.id)}
             >

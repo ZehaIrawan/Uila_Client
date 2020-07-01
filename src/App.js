@@ -23,7 +23,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <div className="bg-grey bg-gray-400">
+        <div className="bg-gray-300">
           <Switch>
             <Route exact path="/" component={ProductList} />
             <Route exact path="/register" component={Register} />
