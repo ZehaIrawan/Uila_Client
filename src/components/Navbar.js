@@ -14,23 +14,34 @@ const Navbar = ({
     getCart();
   }, [getCart]);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const authLinks = (
     <Fragment>
       <Link
-        className="font-semibold text-xl hover:text-primarys"
+        className="font-semibold text-lg sm:hover:bg-gray-300 rounded-lg mt-1 px-2 py-1"
         to="/products"
       >
         <h2>Products</h2>
       </Link>
 
-      <Link className="font-semibold text-xl hover:text-primary" to="/cart">
-        <h2>Cart ({cart.length})</h2>
+      <Link
+        className="font-semibold text-lg sm:hover:bg-gray-300 rounded-lg mt-1 px-2 py-1"
+        to="/"
+      >
+        <h2 onClick={logout}>Logout</h2>
       </Link>
 
-      <Link className="font-semibold text-xl hover:text-primary" to="/">
-        <h2 onClick={logout}>Logout</h2>
+      <Link className="font-semibold text-lg text-white mx-2 w-auto" to="/cart">
+        <div className="flex bg-primary w-4/12 pl-2 py-1 sm:w-auto rounded-full sm:px-2">
+          <img
+            className="pr-1 h-8"
+            src="https://img.icons8.com/material/50/ffffff/shopping-basket--v1.png"
+            alt="cart-icon"
+          />
+
+          <h2 className="bg-primary"> ({cart.length}) Items</h2>
+        </div>
       </Link>
     </Fragment>
   );
@@ -38,15 +49,12 @@ const Navbar = ({
   const guestLinks = (
     <Fragment>
       <Link
-        className="font-semibold text-xl hover:text-primary mt-1 px-2 py-1"
+        className="font-semibold text-lg sm:hover:bg-gray-300 rounded-lg mt-1 px-2 py-1"
         to="/register"
       >
         <h2>Register</h2>
       </Link>
-      <Link
-        className="font-semibold text-xl hover:text-primary mt-1 px-2 py-1"
-        to="/login"
-      >
+      <Link className="font-semibold text-lg sm:hover:bg-gray-300 rounded-lg mt-1 px-2 py-1">
         <h2>Login</h2>
       </Link>
     </Fragment>
@@ -85,7 +93,7 @@ const Navbar = ({
         <div
           className={
             isOpen
-              ? 'block px-2 pl-6 sm:block sm:flex items-center sm:justify-between'
+              ? 'block px-2 pl-6 sm:flex sm:items-center sm:justify-between'
               : 'hidden sm:block px-2 pl-6 sm:flex items-center sm:justify-between'
           }
         >

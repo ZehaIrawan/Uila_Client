@@ -44,7 +44,7 @@ const ProductList = ({
       <Navbar></Navbar>
       <div className="px-8 py-5">
         <img
-          className="rounded w-10/12 object-center hidden sm:block"
+          className="rounded w-full object-center"
           src="https://i.imgur.com/xvo5vKR.png"
           alt="header"
         />
@@ -74,7 +74,7 @@ const ProductList = ({
           );
         })}
 
-        <div>
+        <div className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid gap-8">
           {filteredProducts.map((product) => (
             <Product
               key={product.id}
