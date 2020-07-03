@@ -46,11 +46,18 @@ const ProductList = ({
     <Fragment>
       <Navbar></Navbar>
       <div className="px-8 py-5">
-        <img
-          className="rounded w-full object-center"
-          src="https://i.imgur.com/xvo5vKR.png"
-          alt="header"
-        />
+        <div className="relative text-center">
+          <img
+            className="rounded w-full h-64 object-center"
+            src="https://i.imgur.com/xvo5vKR.png"
+            alt="header"
+          />
+          <div className="absolute top-0 text-white text-left pl-12 pt-16 text-3xl">
+            <h1> Find Healthy and </h1>
+            <h1> favourite foods</h1>
+            <h1> Near you</h1>
+          </div>
+        </div>
 
         <button
           className={
