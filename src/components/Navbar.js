@@ -14,7 +14,7 @@ const Navbar = ({
     getCart();
   }, [getCart]);
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const authLinks = (
     <Fragment>
@@ -32,7 +32,10 @@ const Navbar = ({
         <h2 onClick={logout}>Logout</h2>
       </Link>
 
-      <Link className="font-semibold text-lg text-white mx-2 w-auto" to="/cart">
+      <Link
+        className="font-semibold text-lg text-white mx-2 sm:mt-2"
+        to="/cart"
+      >
         <div className="flex bg-primary w-4/12 pl-2 py-1 sm:w-auto rounded-full sm:px-2">
           <img
             className="pr-1 h-8"

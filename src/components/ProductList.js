@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { addToCart } from '../redux/actions/cart';
 import {
@@ -31,6 +31,8 @@ const ProductList = ({
     resetFilterProducts();
   }, []);
 
+  const [isActive, setIsActive] = useState(0);
+
   if (loading) {
     return (
       <Fragment>
@@ -50,8 +52,15 @@ const ProductList = ({
         />
 
         <button
-          className="border rounded-lg m-4 p-1 bg-custom-sort bg-primary text-white  focus:outline-none  py-1 px-4 "
-          onClick={() => resetFilterProducts()}
+          className={
+            isActive === 0
+              ? 'border-black  text-white rounded-lg m-4 py-1 px-4 bg-custom-sort bg-primary focus:outline-none shadow-lg'
+              : 'border-gray-900 border-1 rounded-lg m-4 py-1 px-4 bg-custom-sort bg-white focus:outline-none shadow-lg'
+          }
+          onClick={() => {
+            resetFilterProducts();
+            setIsActive(0);
+          }}
         >
           All ({product.length})
         </button>
@@ -59,15 +68,24 @@ const ProductList = ({
         {categories.map((category) => {
           let count = 0;
 
+          console.log(category.id);
+
           product.forEach((p) => {
             if (p.category_id === category.id) count += 1;
           });
 
           return (
             <button
-              className="border rounded-lg m-4 py-1 px-4 bg-custom-sort bg-primary text-white focus:outline-none"
+              className={
+                isActive === category.id
+                  ? 'border-black  text-white rounded-lg m-4 py-1 px-4 bg-custom-sort bg-primary focus:outline-none shadow-lg'
+                  : 'border-gray-900 border-1 rounded-lg m-4 py-1 px-4 bg-custom-sort bg-white focus:outline-none shadow-lg'
+              }
               key={category.id}
-              onClick={() => filterProducts(category.id)}
+              onClick={() => {
+                filterProducts(category.id);
+                setIsActive(category.id);
+              }}
             >
               {category.title} ({count})
             </button>
