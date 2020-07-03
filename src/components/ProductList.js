@@ -43,7 +43,7 @@ const ProductList = ({
   }
 
   return (
-    <div>
+    <Fragment>
       <Navbar></Navbar>
       <div className="px-8 py-5">
         <img
@@ -107,7 +107,7 @@ const ProductList = ({
         </div>
         <Footer></Footer>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

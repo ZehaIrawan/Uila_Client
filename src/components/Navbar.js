@@ -57,9 +57,11 @@ const Navbar = ({
       >
         <h2>Register</h2>
       </Link>
-      <Link className="font-semibold text-lg sm:hover:bg-gray-300 rounded-lg mt-1 px-2 py-1" to="/login">
+      <Link
+        className="font-semibold text-lg sm:hover:bg-gray-300 rounded-lg mt-1 px-2 py-1"
+        to="/login"
+      >
         <h2>Login</h2>
-
       </Link>
     </Fragment>
   );

@@ -1,10 +1,17 @@
 import React from 'react';
+import Modal from './modals/Modal';
+import useModal from './modals/useModal';
 
-const Product = ({ id, img, title, description, price, addToCart ,isAuthenticated}) => {
-
-  const loginModal = () =>{
-    isAuthenticated ? console.log('No need') : console.log('Show modal');
-  }
+const Product = ({
+  id,
+  img,
+  title,
+  description,
+  price,
+  addToCart,
+  isAuthenticated,
+}) => {
+  const { isShowing, toggle } = useModal();
 
   return (
     <div className="bg-white rounded-lg overflow-hidden border shadow-lg">
@@ -21,7 +28,7 @@ const Product = ({ id, img, title, description, price, addToCart ,isAuthenticate
           className="absolute bottom-0 right-0 shadow-lg mt-2 bg-primary text-white px-2 py-1 rounded-lg focus:outline-none font-medium mb-6 mr-6"
           onClick={() => {
             addToCart(id);
-            loginModal()
+            toggle();
           }}
         >
           Order Now
@@ -32,6 +39,7 @@ const Product = ({ id, img, title, description, price, addToCart ,isAuthenticate
         <h4 className="font-semibold text-lg">{title}</h4>
         <p className="mt-1 block">{description}</p>
       </div>
+      <Modal isShowing={isShowing} isAuthenticated={isAuthenticated} hide={toggle} />
     </div>
   );
 };
