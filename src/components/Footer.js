@@ -30,7 +30,7 @@ const Footer = () => {
               Icons8
             </a>
           </li>
-          <li></li>
+          <li>Ruby on Rails</li>
         </ul>
       </ul>
     </footer>
