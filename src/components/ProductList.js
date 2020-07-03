@@ -21,6 +21,7 @@ const ProductList = ({
   getProductCategories,
   categories,
   addToCart,
+  isAuthenticated,
 }) => {
   useEffect(() => {
     getProducts();
@@ -68,8 +69,6 @@ const ProductList = ({
         {categories.map((category) => {
           let count = 0;
 
-          console.log(category.id);
-
           product.forEach((p) => {
             if (p.category_id === category.id) count += 1;
           });
@@ -102,6 +101,7 @@ const ProductList = ({
               description={product.description}
               price={product.price}
               addToCart={addToCart}
+              isAuthenticated={isAuthenticated}
             />
           ))}
         </div>
@@ -116,6 +116,7 @@ const mapStateToProps = (state) => ({
   loading: state.product.loading,
   filteredProducts: state.product.filteredProducts,
   categories: state.product.categories,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, {

@@ -57,8 +57,9 @@ const Navbar = ({
       >
         <h2>Register</h2>
       </Link>
-      <Link className="font-semibold text-lg sm:hover:bg-gray-300 rounded-lg mt-1 px-2 py-1">
+      <Link className="font-semibold text-lg sm:hover:bg-gray-300 rounded-lg mt-1 px-2 py-1" to="/login">
         <h2>Login</h2>
+
       </Link>
     </Fragment>
   );
@@ -71,21 +72,21 @@ const Navbar = ({
         </Link>
         <button
           type="button"
-          class="block text-primary focus:text-primary focus:outline-none sm:hidden"
+          className="block text-primary focus:text-primary focus:outline-none sm:hidden"
           onClick={() => setIsOpen(!isOpen)}
         >
           <svg
-            class="h-12 w-12 fill-current hover:text-black"
+            className="h-12 w-12 fill-current hover:text-black"
             viewBox="0 0 24 24"
           >
             {isOpen ? (
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
               />
             ) : (
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
               />
             )}

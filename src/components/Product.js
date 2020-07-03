@@ -1,6 +1,11 @@
 import React from 'react';
 
-const Product = ({ id, img, title, description, price, addToCart }) => {
+const Product = ({ id, img, title, description, price, addToCart ,isAuthenticated}) => {
+
+  const loginModal = () =>{
+    isAuthenticated ? console.log('No need') : console.log('Show modal');
+  }
+
   return (
     <div className="bg-white rounded-lg overflow-hidden border shadow-lg">
       <div className=" pb-2/3 relative">
@@ -14,7 +19,10 @@ const Product = ({ id, img, title, description, price, addToCart }) => {
         </h3>
         <button
           className="absolute bottom-0 right-0 shadow-lg mt-2 bg-primary text-white px-2 py-1 rounded-lg focus:outline-none font-medium mb-6 mr-6"
-          onClick={() => addToCart(id)}
+          onClick={() => {
+            addToCart(id);
+            loginModal()
+          }}
         >
           Order Now
         </button>
