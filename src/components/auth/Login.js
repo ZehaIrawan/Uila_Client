@@ -3,6 +3,8 @@ import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { login } from '../../redux/actions/auth';
+import Footer from '../Footer';
+import Navbar from '../Navbar';
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -28,6 +30,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <Fragment>
+      <Navbar></Navbar>
       <h1>Sign In</h1>
       <p>Sign in to Your Account</p>
       <form onSubmit={(e) => onSubmit(e)}>
@@ -56,6 +59,7 @@ const Login = ({ login, isAuthenticated }) => {
         Dont have an account?
         <Link to="/register">Sign Up</Link>
       </p>
+      <Footer></Footer>
     </Fragment>
   );
 };

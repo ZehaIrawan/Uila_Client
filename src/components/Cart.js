@@ -1,11 +1,12 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
   clearCart,
   decreaseCart,
   getCart,
   increaseCart,
-  removeCart
+  removeCart,
 } from '../redux/actions/cart';
 import CartItem from './CartItem';
 import Navbar from './Navbar';
@@ -31,7 +32,6 @@ const Cart = ({
       </Fragment>
     );
   }
-
 
   let total = 0;
   cart.cart.map((item) => {
@@ -75,12 +75,13 @@ const Cart = ({
         onClick={() => {
           clearCart(cart.cart);
         }}
-
       >
         Clear Cart
       </button>
       <h3>Total: ${total}</h3>
-      <button>Checkout</button>
+      <button>
+        <Link to="/shipping">Checkout</Link>
+      </button>
     </Fragment>
   );
 };
@@ -95,5 +96,5 @@ export default connect(mapStateToProp, {
   increaseCart,
   decreaseCart,
   clearCart,
-  removeCart
+  removeCart,
 })(Cart);
