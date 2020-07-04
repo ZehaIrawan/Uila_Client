@@ -11,7 +11,7 @@ import {
 // Get all products
 export const getCart = () => async (dispatch) => {
   try {
-    const res = await axios.get('http://localhost:5000/api/v1/cart_items');
+    const res = await axios.get('/api/v1/cart_items');
 
     dispatch({
       type: GET_CART,
@@ -36,7 +36,7 @@ export const addToCart = (productId) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      'http://localhost:5000/api/v1/cart_items',
+      ' /api/v1/cart_items',
       params,
       config,
     );
@@ -53,7 +53,7 @@ export const addToCart = (productId) => async (dispatch) => {
 // Remove item from cart
 export const removeCart = (id) => async (dispatch) => {
   try {
-    await axios.delete(`http://localhost:5000/api/v1/cart_items/${id}`);
+    await axios.delete(`/api/v1/cart_items/${id}`);
 
     dispatch({
       type: REMOVE_CART,
@@ -78,7 +78,7 @@ export const increaseCart = (id, quantity) => async (dispatch) => {
 
   try {
     const res = await axios.put(
-      `http://localhost:5000/api/v1/cart_items/${id}`,
+      `/api/v1/cart_items/${id}`,
       quantity,
       config,
     );
@@ -106,7 +106,7 @@ export const decreaseCart = (id, quantity) => async (dispatch) => {
 
   try {
     const res = await axios.put(
-      `http://localhost:5000/api/v1/cart_items/${id}`,
+      ` /api/v1/cart_items/${id}`,
       quantity,
       config,
     );
@@ -125,7 +125,7 @@ export const clearCart = (cart) => async (dispatch) => {
   for (let i = 0; i < cart.length; i++) {
     try {
       await axios.delete(
-        `http://localhost:5000/api/v1/cart_items/${cart[i].id}`,
+        `/api/v1/cart_items/${cart[i].id}`,
       );
       dispatch({
         type: CLEAR_CART,
