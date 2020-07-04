@@ -17,7 +17,7 @@ export const loadUser = () => async (dispatch) => {
   }
 
   try {
-    const res = await axios.get('/api/v1/user');
+    const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/user`);
 
     dispatch({
       type: USER_LOADED,
@@ -42,7 +42,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      '/api/users',
+      `${process.env.REACT_APP_API_BASE_URL}/api/users`,
       body,
       config,
     );
@@ -77,7 +77,7 @@ export const login = (email, password) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      '/api/v1/auth',
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/auth`,
       body,
       config,
     );

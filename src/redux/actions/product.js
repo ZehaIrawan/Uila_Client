@@ -14,7 +14,7 @@ import {
 // Get PRODUGET_PRODUCTS
 export const getProducts = () => async (dispatch) => {
   try {
-    const res = await axios.get('/api/v1/products');
+    const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/products`);
 
     dispatch({
       type: GET_PRODUCTS,
@@ -29,7 +29,7 @@ export const getProducts = () => async (dispatch) => {
 
 export const getProductCategories = () => async (dispatch) => {
   try {
-    const res = await axios.get('/api/v1/categories');
+    const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/categories`);
 
     dispatch({
       type: GET_PRODUCTS_CATEGORIES,
@@ -50,7 +50,7 @@ export const addProduct = (formData) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      '/api/v1/products',
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/products`,
       formData,
       config,
     );
@@ -70,7 +70,7 @@ export const addProduct = (formData) => async (dispatch) => {
 // Delete product
 export const deleteProduct = (id) => async (dispatch) => {
   try {
-    await axios.delete(`'/api/v1/products/${id}`);
+    await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/v1/products/${id}`);
 
     dispatch({
       type: DELETE_PRODUCT,
@@ -109,7 +109,7 @@ export const updateProduct = (id, formData) => async (dispatch) => {
   };
   try {
     const res = await axios.put(
-      `/api/v1/products${id}`,
+      `${process.env.REACT_APP_API_BASE_URL}/api/v1/products${id}`,
       formData,
       config,
     );
