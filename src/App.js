@@ -10,9 +10,9 @@ import Payment from './components/Payment';
 import ProductList from './components/ProductList';
 import PrivateRoutes from './components/routing/PrivateRoutes';
 import Shipping from './components/Shipping';
-import setAuthToken from './components/utils/setAuthToken';
 import { loadUser } from './redux/actions/auth';
 import store from './redux/store';
+import setAuthToken from './utils/setAuthToken';
 
 const App = () => {
   useEffect(() => {

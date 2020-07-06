@@ -37,7 +37,9 @@ const ProductList = ({
   if (loading) {
     return (
       <Fragment>
+        <Navbar />
         <p>Loading ...</p>
+        <Footer />
       </Fragment>
     );
   }

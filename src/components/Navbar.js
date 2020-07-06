@@ -11,8 +11,8 @@ const Navbar = ({
   getCart,
 }) => {
   useEffect(() => {
-    getCart();
-  }, [getCart]);
+    if (isAuthenticated) getCart();
+  }, [getCart,isAuthenticated]);
 
   const [isOpen, setIsOpen] = useState(false);
 
