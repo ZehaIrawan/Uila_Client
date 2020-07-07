@@ -10,6 +10,7 @@ import {
 import Footer from './Footer';
 import Navbar from './Navbar';
 import Product from './Product';
+import SK_PRODUCTLIST from './SK_PRODUCTLIST';
 
 const ProductList = ({
   getProducts,
@@ -28,6 +29,8 @@ const ProductList = ({
     getProductCategories();
   }, [getProducts, getProductCategories]);
 
+  // loading = true;
+
   useEffect(() => {
     resetFilterProducts();
   }, []);
@@ -38,7 +41,7 @@ const ProductList = ({
     return (
       <Fragment>
         <Navbar />
-        <p>Loading ...</p>
+        <SK_PRODUCTLIST></SK_PRODUCTLIST>
         <Footer />
       </Fragment>
     );
@@ -114,8 +117,8 @@ const ProductList = ({
             />
           ))}
         </div>
-        <Footer></Footer>
       </div>
+      <Footer></Footer>
     </Fragment>
   );
 };

@@ -15,7 +15,7 @@ const Product = ({
 
   return (
     <div className="bg-white rounded-lg overflow-hidden border shadow-lg">
-      <div className=" pb-2/3 relative">
+      <div className="pb-2/3 relative">
         <img
           className="absolute h-full w-full object-cover object-center"
           src={img}
