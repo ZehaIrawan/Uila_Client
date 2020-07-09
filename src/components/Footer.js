@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="my-8 py-8 px-8 bg-white  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid gap-8 justify-between border-t-2">
+    <footer className="mt-8 py-8 px-8 sm:px-20 pb-16 sm:pb-40 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid gap-8 justify-between border-t-2 bg-black text-white">
       <ul>
         <h3 className="font-semibold">Our Location</h3>
         <p>77th Sudirman Street</p>

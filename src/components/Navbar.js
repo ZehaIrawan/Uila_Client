@@ -67,7 +67,7 @@ const Navbar = ({
   );
 
   return (
-    <div className="sm:flex bg-white sm:justify-between shadow-lg">
+    <div className="sm:flex bg-white sm:justify-between shadow-lg sm:px-10">
       <nav className="flex items-center justify-between py-2 px-4 sm:px-8">
         <Link to="/">
           <img className="h-20" src="https://i.imgur.com/OdqzUGc.png" alt="" />

@@ -50,25 +50,21 @@ const ProductList = ({
   return (
     <Fragment>
       <Navbar></Navbar>
-      <div className="px-8 py-5">
-        <div className="relative text-center">
-          <img
-            className="rounded w-full h-64 object-center"
-            src="https://i.imgur.com/xvo5vKR.png"
-            alt="header"
+      <div className="px-8 sm:px-24 md:px-16 py-5">
+        <div className="flex justify-end my-6">
+          <input
+            type="text"
+            name=""
+            placeholder="Search by name"
+            className="bg-gray-200 pl-2 py-1 rounded-lg focus:outline-none block w-2/3 sm:w-64"
           />
-          <div className="absolute top-0 text-white text-left pl-12 pt-16 text-3xl">
-            <h1> Find Healthy and </h1>
-            <h1> favourite foods</h1>
-            <h1> Near you</h1>
-          </div>
         </div>
 
         <button
           className={
             isActive === 0
               ? 'border-black  text-white rounded-lg m-4 py-1 px-4 bg-custom-sort bg-primary focus:outline-none shadow-lg'
-              : 'border-gray-900 border-1 rounded-lg m-4 py-1 px-4 bg-custom-sort bg-white focus:outline-none shadow-lg'
+              : 'border-gray-900 border-1 rounded-lg m-4 py-1 px-4 bg-custom-sort bg-gray-200 focus:outline-none shadow-lg'
           }
           onClick={() => {
             resetFilterProducts();
@@ -90,7 +86,7 @@ const ProductList = ({
               className={
                 isActive === category.id
                   ? 'border-black  text-white rounded-lg m-4 py-1 px-4 bg-custom-sort bg-primary focus:outline-none shadow-lg'
-                  : 'border-gray-900 border-1 rounded-lg m-4 py-1 px-4 bg-custom-sort bg-white focus:outline-none shadow-lg'
+                  : 'border-gray-900 border-1 rounded-lg m-4 py-1 px-4 bg-gray-200 focus:outline-none shadow-lg'
               }
               key={category.id}
               onClick={() => {
