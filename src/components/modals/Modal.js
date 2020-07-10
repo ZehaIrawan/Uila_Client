@@ -11,8 +11,8 @@ const Modal = ({ isShowing, hide, isAuthenticated }) => {
           {isOpen ? (
             <button
               onClick={hide}
-              tabindex="-1"
-              class="fixed inset-0 h-full w-full bg-black opacity-50 cursor-default"
+              tabIndex="-1"
+              className="fixed inset-0 h-full w-full bg-black opacity-50 cursor-default"
             ></button>
           ) : null}
 

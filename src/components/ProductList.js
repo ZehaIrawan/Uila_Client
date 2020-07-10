@@ -29,13 +29,15 @@ const ProductList = ({
     getProductCategories();
   }, [getProducts, getProductCategories]);
 
-  // loading = true;
+  loading = true;
 
   useEffect(() => {
     resetFilterProducts();
   }, []);
 
   const [isActive, setIsActive] = useState(0);
+
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   const skeletonNumber = 6;
 
@@ -44,15 +46,20 @@ const ProductList = ({
       <Fragment>
         <Navbar />
         <div className="px-8 sm:px-24 md:px-16 py-5">
-          <div className="flex justify-end my-6 w-2/3 sm:w-64">
-            <div>
+          <div className="flex flex-col sm:flex-row justify-between my-6">
+            <Skeleton width={250} height={35} className=" mt-12 lg:mt-0" />
+
+            <div className="flex flex-col items-end order-first sm:order-last  ">
+              <div>
+                <Skeleton width={400} height={25} />
+              </div>
               <Skeleton width={200} height={25} />
             </div>
           </div>
 
           <div className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid gap-8">
             {[...Array(skeletonNumber)].map((e, i) => (
-              <div>
+              <div key={i}>
                 <SkeletonTheme color="#eeeeee">
                   <Skeleton className="rounded-lg" height={220}></Skeleton>
                   <Skeleton width={150} className="mt-4"></Skeleton>
@@ -71,13 +78,37 @@ const ProductList = ({
     <Fragment>
       <Navbar></Navbar>
       <div className="px-8 sm:px-24 md:px-16 py-5">
-        <div className="flex justify-end my-6">
-          <input
-            type="text"
-            name=""
-            placeholder="Search by name"
-            className="bg-gray-200 pl-2 py-1 rounded-lg focus:outline-none block w-2/3 sm:w-64"
-          />
+        <div className="flex justify-between my-6 flex-col lg:flex-row">
+          <div className="bg-gray-200 rounded-lg w-full sm:w-64 mt-12 lg:mt-0 h-10 pr-6">
+            <img
+              onClick={() => alert('Whoa! This feature is not ready')}
+              className="h-8 inline ml-2"
+              alt="search-icon"
+              src="https://img.icons8.com/ios-filled/50/000000/search.png"
+            />
+            <input
+              type="text"
+              name=""
+              placeholder="What are you craving?"
+              className="inline bg-gray-200 pt-2 ml-2 focus:outline-none "
+              value={searchKeyword}
+              onChange={(e) => setSearchKeyword(e.target.value)}
+            ></input>
+          </div>
+
+          <div className="order-first lg:order-last">
+            <p className="text-xl" style={{ fontFamily: 'EB Garamond' }}>
+              <span>“</span> All you need is love. But a little chocolate now
+              and then doesn't hurt.<span> ”</span>
+              <br></br>
+              <span
+                style={{ fontFamily: 'Open Sans Condensed' }}
+                className="text-primary font-semibold flex-end absolute right-0 mr-24"
+              >
+                Charles M. Schulz
+              </span>
+            </p>
+          </div>
         </div>
 
         <button
