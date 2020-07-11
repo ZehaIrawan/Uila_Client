@@ -29,8 +29,6 @@ const ProductList = ({
     getProductCategories();
   }, [getProducts, getProductCategories]);
 
-  loading = true;
-
   useEffect(() => {
     resetFilterProducts();
   }, []);

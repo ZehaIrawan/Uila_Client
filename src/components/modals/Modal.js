@@ -27,9 +27,9 @@ const Modal = ({ isShowing, hide, isAuthenticated }) => {
               <div>
                 <h1 className="font-bold">Ready to order?</h1>
                 <p className="font-medium pt-4 text-base">
-                  Sign up <br />
+                  Sign in <br />
                   or
-                  <br /> Sign in to get started
+                  <br /> Sign up to get started
                 </p>
 
                 <div className="flex justify-around pt-4">
