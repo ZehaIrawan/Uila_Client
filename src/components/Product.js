@@ -1,4 +1,5 @@
 import React from 'react';
+import Skeleton from 'react-loading-skeleton';
 import Modal from './modals/Modal';
 import useModal from './modals/useModal';
 
@@ -15,10 +16,10 @@ const Product = ({
 
   return (
     <div className="bg-white rounded-lg overflow-hidden border shadow-lg">
-      <div className=" pb-2/3 relative">
+      <div className="pb-2/3 relative">
         <img
           className="absolute h-full w-full object-cover object-center"
-          src={img}
+          src={img || <Skeleton></Skeleton>}
           alt=""
         />
         <h3 className="absolute bottom-0 font-semibold mt-4 text-xl text-primary bg-white rounded-lg px-1 mb-6 ml-6 shadow-lg">
@@ -39,7 +40,11 @@ const Product = ({
         <h4 className="font-semibold text-lg">{title}</h4>
         <p className="mt-1 block">{description}</p>
       </div>
-      <Modal isShowing={isShowing} isAuthenticated={isAuthenticated} hide={toggle} />
+      <Modal
+        isShowing={isShowing}
+        isAuthenticated={isAuthenticated}
+        hide={toggle}
+      />
     </div>
   );
 };

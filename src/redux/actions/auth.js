@@ -1,5 +1,4 @@
-import axios from 'axios';
-import setAuthToken from '../../components/utils/setAuthToken';
+import api from '../../utils/api';
 import {
   AUTH_ERROR,
   LOGIN_FAIL,
@@ -12,12 +11,8 @@ import {
 
 // Load User
 export const loadUser = () => async (dispatch) => {
-  if (localStorage.token) {
-    setAuthToken(localStorage.token);
-  }
-
   try {
-    const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/user`);
+    const res = await api.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/user`);
 
     dispatch({
       type: USER_LOADED,
@@ -41,7 +36,7 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   const body = JSON.stringify({ name, email, password });
 
   try {
-    const res = await axios.post(
+    const res = await api.post(
       `${process.env.REACT_APP_API_BASE_URL}/api/users`,
       body,
       config,
@@ -76,7 +71,7 @@ export const login = (email, password) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
 
   try {
-    const res = await axios.post(
+    const res = await api.post(
       `${process.env.REACT_APP_API_BASE_URL}/api/v1/auth`,
       body,
       config,

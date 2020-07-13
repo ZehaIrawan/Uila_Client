@@ -10,9 +10,9 @@ import Payment from './components/Payment';
 import ProductList from './components/ProductList';
 import PrivateRoutes from './components/routing/PrivateRoutes';
 import Shipping from './components/Shipping';
-import setAuthToken from './components/utils/setAuthToken';
 import { loadUser } from './redux/actions/auth';
 import store from './redux/store';
+import setAuthToken from './utils/setAuthToken';
 
 const App = () => {
   useEffect(() => {
@@ -23,7 +23,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <div className="bg-gray-300" id="app">
+        <div className="bg-white" id="app">
           <Switch>
             <Route exact path="/" component={ProductList} />
             <Route exact path="/register" component={Register} />

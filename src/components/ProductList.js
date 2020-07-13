@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { connect } from 'react-redux';
 import { addToCart } from '../redux/actions/cart';
 import {
@@ -34,10 +35,39 @@ const ProductList = ({
 
   const [isActive, setIsActive] = useState(0);
 
+  const [searchKeyword, setSearchKeyword] = useState('');
+
+  const skeletonNumber = 6;
+
   if (loading) {
     return (
       <Fragment>
-        <p>Loading ...</p>
+        <Navbar />
+        <div className="px-8 sm:px-24 md:px-16 py-5">
+          <div className="flex flex-col sm:flex-row justify-between my-6">
+            <Skeleton width={250} height={35} className=" mt-12 lg:mt-0" />
+
+            <div className="flex flex-col items-end order-first sm:order-last  ">
+              <div>
+                <Skeleton width={400} height={25} />
+              </div>
+              <Skeleton width={200} height={25} />
+            </div>
+          </div>
+
+          <div className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid gap-8">
+            {[...Array(skeletonNumber)].map((e, i) => (
+              <div key={i}>
+                <SkeletonTheme color="#eeeeee">
+                  <Skeleton className="rounded-lg" height={220}></Skeleton>
+                  <Skeleton width={150} className="mt-4"></Skeleton>
+                  <Skeleton count={2} className="mt-4" />
+                </SkeletonTheme>
+              </div>
+            ))}
+          </div>
+        </div>
+        <Footer />
       </Fragment>
     );
   }
@@ -45,17 +75,37 @@ const ProductList = ({
   return (
     <Fragment>
       <Navbar></Navbar>
-      <div className="px-8 py-5">
-        <div className="relative text-center">
-          <img
-            className="rounded w-full h-64 object-center"
-            src="https://i.imgur.com/xvo5vKR.png"
-            alt="header"
-          />
-          <div className="absolute top-0 text-white text-left pl-12 pt-16 text-3xl">
-            <h1> Find Healthy and </h1>
-            <h1> favourite foods</h1>
-            <h1> Near you</h1>
+      <div className="px-8 sm:px-24 md:px-16 py-5">
+        <div className="flex justify-between my-6 flex-col lg:flex-row">
+          <div className="bg-gray-200 rounded-lg w-full sm:w-64 mt-12 lg:mt-0 h-10 pr-6">
+            <img
+              onClick={() => alert('Whoa! This feature is not ready')}
+              className="h-8 inline ml-2"
+              alt="search-icon"
+              src="https://img.icons8.com/ios-filled/50/000000/search.png"
+            />
+            <input
+              type="text"
+              name=""
+              placeholder="What are you craving?"
+              className="inline bg-gray-200 pt-2 ml-2 focus:outline-none "
+              value={searchKeyword}
+              onChange={(e) => setSearchKeyword(e.target.value)}
+            ></input>
+          </div>
+
+          <div className="order-first lg:order-last">
+            <p className="text-xl" style={{ fontFamily: 'EB Garamond' }}>
+              <span>“</span> All you need is love. But a little chocolate now
+              and then doesn't hurt.<span> ”</span>
+              <br></br>
+              <span
+                style={{ fontFamily: 'Open Sans Condensed' }}
+                className="text-primary font-semibold flex-end absolute right-0 mr-24"
+              >
+                Charles M. Schulz
+              </span>
+            </p>
           </div>
         </div>
 
@@ -63,7 +113,7 @@ const ProductList = ({
           className={
             isActive === 0
               ? 'border-black  text-white rounded-lg m-4 py-1 px-4 bg-custom-sort bg-primary focus:outline-none shadow-lg'
-              : 'border-gray-900 border-1 rounded-lg m-4 py-1 px-4 bg-custom-sort bg-white focus:outline-none shadow-lg'
+              : 'border-gray-900 border-1 rounded-lg m-4 py-1 px-4 bg-custom-sort bg-gray-200 focus:outline-none shadow-lg'
           }
           onClick={() => {
             resetFilterProducts();
@@ -85,7 +135,7 @@ const ProductList = ({
               className={
                 isActive === category.id
                   ? 'border-black  text-white rounded-lg m-4 py-1 px-4 bg-custom-sort bg-primary focus:outline-none shadow-lg'
-                  : 'border-gray-900 border-1 rounded-lg m-4 py-1 px-4 bg-custom-sort bg-white focus:outline-none shadow-lg'
+                  : 'border-gray-900 border-1 rounded-lg m-4 py-1 px-4 bg-gray-200 focus:outline-none shadow-lg'
               }
               key={category.id}
               onClick={() => {
@@ -112,8 +162,8 @@ const ProductList = ({
             />
           ))}
         </div>
-        <Footer></Footer>
       </div>
+      <Footer></Footer>
     </Fragment>
   );
 };

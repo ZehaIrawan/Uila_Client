@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../../utils/api';
 import {
   ADD_TO_CART,
   CLEAR_CART,
@@ -11,7 +11,7 @@ import {
 // Get all products
 export const getCart = () => async (dispatch) => {
   try {
-    const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/cart_items`);
+    const res = await api.get(`${process.env.REACT_APP_API_BASE_URL}/api/v1/cart_items`);
 
     dispatch({
       type: GET_CART,
@@ -35,7 +35,7 @@ export const addToCart = (productId) => async (dispatch) => {
   };
 
   try {
-    const res = await axios.post(
+    const res = await api.post(
       `${process.env.REACT_APP_API_BASE_URL}/api/v1/cart_items`,
       params,
       config,
@@ -53,7 +53,7 @@ export const addToCart = (productId) => async (dispatch) => {
 // Remove item from cart
 export const removeCart = (id) => async (dispatch) => {
   try {
-    await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/api/v1/cart_items/${id}`);
+    await api.delete(`${process.env.REACT_APP_API_BASE_URL}/api/v1/cart_items/${id}`);
 
     dispatch({
       type: REMOVE_CART,
@@ -77,7 +77,7 @@ export const increaseCart = (id, quantity) => async (dispatch) => {
   };
 
   try {
-    const res = await axios.put(
+    const res = await api.put(
       `${process.env.REACT_APP_API_BASE_URL}/api/v1/cart_items/${id}`,
       quantity,
       config,
@@ -105,7 +105,7 @@ export const decreaseCart = (id, quantity) => async (dispatch) => {
   };
 
   try {
-    const res = await axios.put(
+    const res = await api.put(
       `${process.env.REACT_APP_API_BASE_URL}/api/v1/cart_items/${id}`,
       quantity,
       config,
@@ -124,7 +124,7 @@ export const decreaseCart = (id, quantity) => async (dispatch) => {
 export const clearCart = (cart) => async (dispatch) => {
   for (let i = 0; i < cart.length; i++) {
     try {
-      await axios.delete(
+      await api.delete(
         `${process.env.REACT_APP_API_BASE_URL}/api/v1/cart_items/${cart[i].id}`,
       );
       dispatch({
