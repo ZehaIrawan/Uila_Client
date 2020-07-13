@@ -4,7 +4,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/808e4a62-996f-4481-9f53-fa58a988af4a/deploy-status)](https://app.netlify.com/sites/elegant-jones-65bc7b/deploys)
 
-![Uila!](https://i.imgur.com/je6ukTj.jpg)
+![Uila!](https://i.imgur.com/qdtia8X.png)
 
 Design by [Saquib Shah](https://dribbble.com/shots/11589829-Kuk-Fresh)
 
