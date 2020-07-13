@@ -12,7 +12,7 @@ const Navbar = ({
 }) => {
   useEffect(() => {
     if (isAuthenticated) getCart();
-  }, [getCart,isAuthenticated]);
+  }, [getCart, isAuthenticated]);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -22,7 +22,7 @@ const Navbar = ({
         className="font-semibold text-lg sm:hover:bg-gray-300 rounded-lg mt-1 px-2 py-1"
         to="/products"
       >
-        <h2>Products</h2>
+        <h2>Our Menu</h2>
       </Link>
 
       <Link
@@ -43,7 +43,7 @@ const Navbar = ({
             alt="cart-icon"
           />
 
-          <h2 className="bg-primary"> ({cart.length}) Items</h2>
+          <h2 className="bg-primary"> ({cart.length})</h2>
         </div>
       </Link>
     </Fragment>
@@ -70,7 +70,9 @@ const Navbar = ({
     <div className="sm:flex bg-white sm:justify-between shadow-lg sm:px-10">
       <nav className="flex items-center justify-between py-2 px-4 sm:px-8">
         <Link to="/">
-          <img className="h-20" src="https://i.imgur.com/OdqzUGc.png" alt="" />
+          <h1 className="text-primary font-extrabold text-3xl  w-full sm:w-64">
+            Uila!
+          </h1>
         </Link>
         <button
           type="button"

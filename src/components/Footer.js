@@ -2,10 +2,12 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="mt-8 pt-8 px-8 sm:px-20 pb-16 sm:pb-40 bg-black text-white">
+    <footer className="mt-8 pt-8 px-8 sm:px-20 pb-16 sm:pb-20 bg-black text-white">
       <div className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid gap-8 justify-between border-b-2 pb-12 mb-8">
         <div className="flex flex-col justify-between">
-          <h1 className="text-primary font-semibold text-3xl">Uila!</h1>
+        <h1 className="text-primary font-extrabold text-3xl  w-full sm:w-64">
+            Uila!
+          </h1>
 
           <div className="flex mt-6 sm:mt-0">
             <a
